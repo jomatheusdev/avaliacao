@@ -6,7 +6,7 @@ let disciplinaSchema = new mongoose.Schema({
   descricao: { type: String },
   dataInicio: { type: Date, default: Date.now },
   dataFim: { type: Date },
-  tarefas: [{ type: mongoose.Schema.Types.ObjectId, ref: "Tarefa" }],
+  tarefas: [{ type: mongoose.Schema.Types.ObjectId, ref: "Tarefa" }], // Muitos para muitos
 });
 
 module.exports = mongoose.model("Disciplina", disciplinaSchema);

@@ -6,9 +6,9 @@ let tarefaSchema = new mongoose.Schema({
   concluida: Boolean,
   aluno: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: Aluno,
+    ref: Aluno, // Um para um
   },
-  disciplinas: [{ type: mongoose.Schema.Types.ObjectId, ref: "Disciplina" }],
+  disciplinas: [{ type: mongoose.Schema.Types.ObjectId, ref: "Disciplina" }], // Muitos para muitos
 });
 
 module.exports = mongoose.model("Tarefa", tarefaSchema);
