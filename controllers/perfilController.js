@@ -1,48 +1,62 @@
-
-
 const criarPerfil = async (req, res) => {
-  const { matricula, telefone, endereco, alunoId } = req.body;
+  try {
+    const { matricula, telefone, endereco, alunoId } = req.body;
 
-  const novoPerfil = new Perfil({
-    matricula,
-    telefone,
-    endereco,
-    aluno: alunoId,
-  });
+    const novoPerfil = new Perfil({
+      matricula,
+      telefone,
+      endereco,
+      aluno: alunoId,
+    });
 
-  await novoPerfil.save();
+    await novoPerfil.save();
 
-  await Aluno.updateOne(
-    { _id: alunoId },
-    { $set: { perfil: novoPerfil._id } }
-  );
+    await Aluno.updateOne(
+      { _id: alunoId },
+      { $set: { perfil: novoPerfil._id } }
+    );
 
-  res.json({
-    message: "Perfil criado com sucesso!",
-    perfil: novoPerfil,
-  });
+    res.status(201).json({
+      message: "Perfil criado com sucesso!",
+      perfil: novoPerfil,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao criar perfil", error });
+  }
 };
 
 const obterTodosPerfis = async (req, res) => {
-  const perfis = await Perfil.find().populate('aluno');
-  res.json(perfis);
+  try {
+    const perfis = await Perfil.find().populate('aluno');
+    res.status(200).json(perfis);
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao obter perfis", error });
+  }
 };
 
 const deletarPerfil = async (req, res) => {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-  await Perfil.deleteOne({ _id: id });
-  res.json({ message: "Perfil removido com sucesso!" });
+    await Perfil.deleteOne({ _id: id });
+    res.status(200).json({ message: "Perfil removido com sucesso!" });
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao remover perfil", error });
+  }
 };
 
 const editarPerfil = async (req, res) => {
-  const { id } = req.params;
-  const { matricula, telefone, endereco, alunoId } = req.body;
+  try {
+    const { id } = req.params;
+    const { matricula, telefone, endereco, alunoId } = req.body;
 
-  let perfil = await Perfil.findByIdAndUpdate(id, { matricula, telefone, endereco, aluno: alunoId });
-  res.status(200).json({
-    message: "Perfil atualizado com sucesso!",
-    perfil,
-  });
+    let perfil = await Perfil.findByIdAndUpdate(id, { matricula, telefone, endereco, aluno: alunoId });
+    res.status(200).json({
+      message: "Perfil atualizado com sucesso!",
+      perfil,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao atualizar perfil", error });
+  }
 };
 
