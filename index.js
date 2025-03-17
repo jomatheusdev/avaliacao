@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-app.use(express.json()); // Adicionar esta linha para analisar JSON
+app.use(express.json());
 
 const turmaRoutes = require("./routes/turmaRoutes");
 const tarefaRoutes = require("./routes/turmaRoutes");
