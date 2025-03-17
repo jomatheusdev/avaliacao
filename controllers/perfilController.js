@@ -60,3 +60,10 @@ const editarPerfil = async (req, res) => {
   }
 };
 
+module.exports = {
+  criarPerfil,
+  obterTodosPerfis,
+  deletarPerfil,
+  editarPerfil
+};
+

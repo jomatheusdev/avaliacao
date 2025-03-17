@@ -56,3 +56,10 @@ const editarTarefa = async (req, res) => {
   }
 };
 
+module.exports = {
+  criarTarefa,
+  obterTodasTarefas,
+  deletarTarefa,
+  editarTarefa
+};
+

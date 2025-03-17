@@ -54,3 +54,10 @@ const editarProfessor = async (req, res) => {
   }
 };
 
+module.exports = {
+  criarProfessor,
+  obterTodosProfessores,
+  deletarProfessor,
+  editarProfessor
+};
+

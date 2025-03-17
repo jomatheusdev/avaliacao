@@ -53,3 +53,10 @@ const editarAluno = async (req, res) => {
   }
 };
 
+module.exports = {
+  criarAluno,
+  obterTodosAlunos,
+  deletarAluno,
+  editarAluno
+};
+

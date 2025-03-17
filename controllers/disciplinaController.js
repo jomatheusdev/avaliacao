@@ -62,3 +62,10 @@ const editarDisciplina = async (req, res) => {
   }
 };
 
+module.exports = {
+  criarDisciplina,
+  obterTodasDisciplinas,
+  deletarDisciplina,
+  editarDisciplina
+};
+
