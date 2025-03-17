@@ -1,3 +1,5 @@
+const Aluno = require("../models/aluno");
+
 const criarAluno = async (req, res) => {
   try {
     const { nome, idade } = req.body;
