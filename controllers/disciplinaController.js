@@ -12,7 +12,6 @@ const criarDisciplina = async (req, res) => {
 
     await novaDisciplina.save();
 
-    // Atualiza as tarefas associadas à disciplina
     await Tarefa.updateMany(
       { _id: { $in: tarefasIds } },
       { $push: { disciplinas: novaDisciplina._id } }

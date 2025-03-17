@@ -54,3 +54,10 @@ const editarTurma = async (req, res) => {
   }
 };
 
+module.exports = {
+  criarTurma,
+  obterTodasTurmas,
+  deletarTurma,
+  editarTurma
+};
+
